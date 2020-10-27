@@ -44,8 +44,6 @@ public class YoovyWare {
         latch = hardwareMap.servo.get("latch");
 
         //Reverse direction of necessary motors
-        driveFL.setDirection(DcMotor.Direction.REVERSE);
-        driveBL.setDirection(DcMotor.Direction.REVERSE);
         intakeLeft.setDirection(DcMotor.Direction.REVERSE);
 
     }
@@ -65,6 +63,13 @@ public class YoovyWare {
 
     //Sets power determined by aq maximum speed and a percentage applied later.
     public void driveTrain(double leftBaseSpeed, double rightBaseSpeed, double speedModifier) {
+
+        //Sets the drive train to run without encoders
+        driveFL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        driveBL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        driveFR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        driveBR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
         driveFL.setPower(leftBaseSpeed * speedModifier);
         driveBL.setPower(leftBaseSpeed * speedModifier);
         driveFR.setPower(rightBaseSpeed * speedModifier);
@@ -72,6 +77,17 @@ public class YoovyWare {
     }
 
 
+    public void driveTrain(double distanceInches, double speedControl){
+
+        //Sets the drive train to run with encoders
+        driveFL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        driveBL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        driveFR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        driveBR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
+
+    }
 
     /*Intake Functions*/
 

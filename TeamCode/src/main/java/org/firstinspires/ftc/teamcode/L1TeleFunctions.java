@@ -31,7 +31,7 @@ public class L1TeleFunctions extends LinearOpMode{
         while (opModeIsActive()){
 
             //Controls the drive train
-            yoovy.driveTrain(gamepad1.left_stick_y, gamepad1.right_stick_y, speedModifier);
+            yoovy.driveTrain(-gamepad1.left_stick_y, gamepad1.right_stick_y, speedModifier);
 
             //Controls the intake and outtake
             yoovy.intakeFunction(intakePower, outtakePower, gamepad1.right_bumper, gamepad1.left_bumper);
